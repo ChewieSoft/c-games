@@ -23,7 +23,7 @@ void jogarJokenpo() {
 
     // Determina o resultado
     if (escolha_usuario == escolha_maquina) {
-        printf("Empate\n");
+        printf("Empate ._.\n");
     } else if ((escolha_usuario == 0 && escolha_maquina == 2) || (escolha_usuario == 1 && escolha_maquina == 0) || (escolha_usuario == 2 && escolha_maquina == 1)) {
         printf("Vitória! :D\n");
     } else {
