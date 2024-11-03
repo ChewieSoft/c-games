@@ -130,6 +130,11 @@
   <ItemGroup>
     <ClCompile Include="app.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tools\terminal_colors\terminal_colors.vcxproj">
+      <Project>{09617fa2-4d4c-47f2-9552-a2dbdbb09c76}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

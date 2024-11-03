@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <windows.h>
+#include <Windows.h>
+#include <stdbool.h>
+#include "../tools/terminal_colors/terminal_colors.h"
 
 #define BOARD_WIDTH 20
 #define BOARD_HEIGHT 20
@@ -23,7 +26,7 @@ enum Direction direction;
 // Função para configurar o jogo
 void initialize_game()
 {
-    is_game_over = 0;
+    is_game_over = false;
     direction = STOP;
     snake_head_x = BOARD_WIDTH / 2;
     snake_head_y = BOARD_HEIGHT / 2;
@@ -36,26 +39,40 @@ void initialize_game()
 // Desenha o tabuleiro, a cobra e a fruta
 void draw_board()
 {
+    
     system("cls");
-    for (int column = 0; column < BOARD_WIDTH + 2; column++)
-        printf("#");
+    printf("%s     _S_N_A_K_E_      %s\n", set_print(fgBLACK, bgORANGE, caNORMAL), RESET);
+    for (int column = 0; column < BOARD_WIDTH +2; column++)
+    {
+        printf("%s %s", set_print(fgBLACK, bgORANGE, caNORMAL), RESET);
+    }                
     printf("\n");
 
     for (int row = 0; row < BOARD_HEIGHT; row++) {
-        for (int column = 0; column < BOARD_WIDTH; column++) {
+        for (int column = 0; column < BOARD_WIDTH; column++)
+        {
             if (column == 0)
-                printf("#");
+            {
+                printf("%s\xDC%s", set_print(fgORANGE, bgORANGE, caNORMAL), RESET);
+            }                
 
             if (row == snake_head_y && column == snake_head_x)
-                printf("O"); // Cabeça da cobra
+            {
+                printf("%sO%s", set_print(fgGREEN, bgBLACK, caNORMAL), RESET); // Cabeça da cobra
+            }                
             else if (row == fruit_y && column == fruit_x)
-                printf("F"); // Fruta
-            else {
-                int is_tail_part = 0;
-                for (int k = 0; k < snake_tail_length; k++) {
-                    if (snake_tail_x[k] == column && snake_tail_y[k] == row) {
-                        printf("o");
-                        is_tail_part = 1;
+            {
+                printf("%s0%s", set_print(fgRED, bgBLACK, caNORMAL), RESET); // Fruta
+            }                
+            else
+            {
+                int is_tail_part = false;
+                for (int k = 0; k < snake_tail_length; k++)
+                {
+                    if (snake_tail_x[k] == column && snake_tail_y[k] == row)
+                    {
+                        printf("%so%s", set_print(fgGREEN, bgBLACK, caNORMAL), RESET);
+                        is_tail_part = true;
                         break;
                     }
                 }
@@ -64,16 +81,21 @@ void draw_board()
             }
 
             if (column == BOARD_WIDTH - 1)
-                printf("#");
+            {
+                printf("%s\xDC%s", set_print(fgORANGE, bgORANGE, caNORMAL), RESET);
+            }                
         }
         printf("\n");
     }
 
     for (int horizontal_position = 0; horizontal_position < BOARD_WIDTH + 2; horizontal_position++)
-        printf("#");
+    {
+        printf("%s\xDC%s", set_print(fgORANGE, bgORANGE, caNORMAL), RESET);
+    }        
     printf("\n");
 
     printf("Score: %d\n", score);
+    printf("x: %i, y: %i", snake_head_x, snake_head_y);
 }
 
 // Captura a entrada do usuário
@@ -93,14 +115,15 @@ void capture_input() {
             direction = DOWN;
             break;
         case 'x':
-            is_game_over = 1;
+            is_game_over = true;
             break;
         }
     }
 }
 
 // Atualiza a lógica da cobra e da fruta
-void update_game_logic() {
+void update_game_logic()
+{
     int previous_x = snake_tail_x[0];
     int previous_y = snake_tail_y[0];
     int temp_x, temp_y;
@@ -108,7 +131,8 @@ void update_game_logic() {
     snake_tail_y[0] = snake_head_y;
 
     // Atualiza posição da cauda
-    for (int i = 1; i < snake_tail_length; i++) {
+    for (int i = 1; i < snake_tail_length; i++)
+    {
         temp_x = snake_tail_x[i];
         temp_y = snake_tail_y[i];
         snake_tail_x[i] = previous_x;
@@ -143,13 +167,15 @@ void update_game_logic() {
     else if (snake_head_y < 0) snake_head_y = BOARD_HEIGHT - 1;
 
     // Verifica colisão com a cauda
-    for (int tail_index = 0; tail_index < snake_tail_length; tail_index++) {
+    for (int tail_index = 0; tail_index < snake_tail_length; tail_index++)
+    {
         if (snake_tail_x[tail_index] == snake_head_x && snake_tail_y[tail_index] == snake_head_y)
-            is_game_over = 1;
+            is_game_over = true;
     }
 
     // Verifica se a cobra comeu a fruta
-    if (snake_head_x == fruit_x && snake_head_y == fruit_y) {
+    if (snake_head_x == fruit_x && snake_head_y == fruit_y)
+    {
         score += 10;
         fruit_x = rand() % BOARD_WIDTH;
         fruit_y = rand() % BOARD_HEIGHT;
@@ -158,9 +184,15 @@ void update_game_logic() {
 }
 
 // Função principal do jogo
-int main() {
+int main()
+{
+
+    // set console code page to utf-8
+    SetConsoleOutputCP(CP_UTF8);
     initialize_game();
-    while (!is_game_over) {
+    
+    while (!is_game_over)
+    {       
         draw_board();
         capture_input();
         update_game_logic();
