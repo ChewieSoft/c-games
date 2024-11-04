@@ -61,7 +61,12 @@ void menuPrincipal() {
         ponto_usuario = 0;
         ponto_maquina = 0;
 
-        printf("\nEscolha o modo de jogo:\n");
+		#ifdef _WIN32
+        system("CLS");
+        #else
+        system("clear");  
+        #endif	
+		printf("\nEscolha o modo de jogo:\n");
         printf("(1) Torneio (3 rodadas)\n");
         printf("(2) Combate (5 rodadas)\n");
         printf("(3) Escolha quantas rodadas\n");
@@ -69,7 +74,12 @@ void menuPrincipal() {
         printf("(5) Sair do jogo\n");
         printf("\nDigite sua opção: ");
         scanf("%d", &selecModo);
-		printf("\n<------------------------------------------------->\n");
+		//printf("\n<------------------------------------------------->\n");
+		#ifdef _WIN32
+        system("CLS");
+        #else
+        system("clear");  
+        #endif
 
         if (selecModo == 1) {
             for (int i = 0; i < 3; i++) {
@@ -94,7 +104,14 @@ void menuPrincipal() {
                 scanf("%d", &jogarNovamente);
             } while (jogarNovamente == 1);
         } else if (selecModo == 5) {
-            printf("\nObrigado por jogar!\n");
+            printf("\nObrigado por jogar! :DDDDDDDDDDD\n\n");
+			#ifdef _WIN32
+                Sleep(2000);
+                system("CLS");				
+            #else
+                sleep(2);
+                system("clear"); 			
+            #endif
             break;
         } else {
             printf("\nOpção Inválida! Tente novamente.\n");
@@ -104,17 +121,32 @@ void menuPrincipal() {
         printf("\n<------------------------------------------------->\n");
 		printf("\nUsuário - %d ponto(s).\nRand - %d ponto(s).\n", ponto_usuario, ponto_maquina);
         if (ponto_usuario > ponto_maquina) {
+			char m;
             printf("\n\nVITÓRIA DO USUÁRIO!! :DDD\n\n");
 			printf("<------------------------------------------------->\n");
-            pausa1Segundo();
+			#ifdef _WIN32
+                Sleep(5000); 
+            #else
+                sleep(5);  
+            #endif	
         } else if (ponto_usuario < ponto_maquina) {
+			char m;
             printf("\n\nDerrota, vitória do RAND D:\n\n");
 			printf("<------------------------------------------------->\n");
-            pausa1Segundo();
+			#ifdef _WIN32
+                Sleep(5000); 
+            #else
+                sleep(5);  
+            #endif
         } else {
+			char m;
             printf("\n\nEmpate .-.\n\n");
 			printf("<------------------------------------------------->\n");
-            pausa1Segundo();
+			#ifdef _WIN32
+                Sleep(5000); 
+            #else
+                sleep(5);  
+            #endif
         }
     }
 }
