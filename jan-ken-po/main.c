@@ -69,6 +69,7 @@ void menuPrincipal() {
         printf("(5) Sair do jogo\n");
         printf("\nDigite sua opção: ");
         scanf("%d", &selecModo);
+		printf("\n<------------------------------------------------->\n");
 
         if (selecModo == 1) {
             for (int i = 0; i < 3; i++) {
@@ -100,15 +101,19 @@ void menuPrincipal() {
             continue;  
         }
 
-        printf("\nUsuário - %d ponto(s).\nRand - %d ponto(s).\n", ponto_usuario, ponto_maquina);
+        printf("\n<------------------------------------------------->\n");
+		printf("\nUsuário - %d ponto(s).\nRand - %d ponto(s).\n", ponto_usuario, ponto_maquina);
         if (ponto_usuario > ponto_maquina) {
             printf("\n\nVITÓRIA DO USUÁRIO!! :DDD\n\n");
+			printf("<------------------------------------------------->\n");
             pausa1Segundo();
         } else if (ponto_usuario < ponto_maquina) {
             printf("\n\nDerrota, vitória do RAND D:\n\n");
+			printf("<------------------------------------------------->\n");
             pausa1Segundo();
         } else {
-            printf("\n\nEmpate ._.\n\n");
+            printf("\n\nEmpate .-.\n\n");
+			printf("<------------------------------------------------->\n");
             pausa1Segundo();
         }
     }
