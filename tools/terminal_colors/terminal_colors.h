@@ -36,6 +36,7 @@ const char* ePUSH = "\xE2\xA4\xB5";
 const char* ePOP = "\xE2\xA4\xB4";
 const char* eEYE = "\xf0\x9f\x91\x81";
 const char* eCROSS = "\xE2\x9D\x8C";
+const char* eAPPLE = "\xF0\x9F\x8D\x8E";
 
 
 enum ForegroundColor

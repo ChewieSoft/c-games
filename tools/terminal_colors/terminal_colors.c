@@ -16,7 +16,6 @@ char* set_print(int foreground, int background, int attribute)
     return buffer;
 }
 
-
 void resetcolors(void)
 {
     printf("\033[0m");
