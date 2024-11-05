@@ -54,7 +54,7 @@ void jogarJokenpo(int *ponto_usuario, int *ponto_maquina) {
 }
 
 void menuPrincipal() {
-    int selecModo;
+    char selecModo;
     int ponto_usuario, ponto_maquina;
 
     while (1) {
@@ -66,6 +66,7 @@ void menuPrincipal() {
         #else
         system("clear");  
         #endif	
+		printf("\nBem-vindo ao Jokenpô contra o rand (heheh)!\n");
 		printf("\nEscolha o modo de jogo:\n");
         printf("(1) Torneio (3 rodadas)\n");
         printf("(2) Combate (5 rodadas)\n");
@@ -73,7 +74,7 @@ void menuPrincipal() {
         printf("(4) Infinitas rodadas\n");
         printf("(5) Sair do jogo\n");
         printf("\nDigite sua opção: ");
-        scanf("%d", &selecModo);
+        scanf("%c", &selecModo);
 		//printf("\n<------------------------------------------------->\n");
 		#ifdef _WIN32
         system("CLS");
@@ -81,29 +82,29 @@ void menuPrincipal() {
         system("clear");  
         #endif
 
-        if (selecModo == 1) {
+        if (selecModo == '1') {
             for (int i = 0; i < 3; i++) {
                 jogarJokenpo(&ponto_usuario, &ponto_maquina);
             }
-        } else if (selecModo == 2) {
+        } else if (selecModo == '2') {
             for (int i = 0; i < 5; i++) {
                 jogarJokenpo(&ponto_usuario, &ponto_maquina);
             }
-        } else if (selecModo == 3) {
+        } else if (selecModo == '3') {
             int quant_rodadas;
             printf("\nDigite a quantidade de rodadas que deseja jogar: ");
             scanf("%d", &quant_rodadas);
             for (int i = 0; i < quant_rodadas; i++) {
                 jogarJokenpo(&ponto_usuario, &ponto_maquina);
             }
-        } else if (selecModo == 4) {
+        } else if (selecModo == '4') {
             int jogarNovamente;
             do {
                 jogarJokenpo(&ponto_usuario, &ponto_maquina);
                 printf("\nDeseja jogar novamente? (1 - Sim / 0 - Não): ");
                 scanf("%d", &jogarNovamente);
             } while (jogarNovamente == 1);
-        } else if (selecModo == 5) {
+        } else if (selecModo == '5') {
             printf("\nObrigado por jogar! :DDDDDDDDDDD\n\n");
 			#ifdef _WIN32
                 Sleep(2000);
@@ -153,7 +154,6 @@ void menuPrincipal() {
 
 int main() {
     srand(time(NULL)); 
-    printf("Bem-vindo ao Jokenpô contra o rand (heheh)!\n");
     menuPrincipal();   
     return 0;
 }
