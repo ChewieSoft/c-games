@@ -1,6 +1,6 @@
 # c-games
 
->Trabalho sobre jogos básicos usando liguagem C, solicitado pelo professor de Alfredo Boente durante a matéria Programação Estruturada da faculdade.
+>Trabalho sobre jogos básicos usando liguagem C, solicitado pelo professor Alfredo Boente durante a matéria Programação Estruturada da faculdade.
 
 ---
 
