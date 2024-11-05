@@ -1,6 +1,19 @@
 # c-games
 
-Trabalho solicitado pelo professor de Alfredo Boente durante a matéria Programação Estruturada da faculdade.
+>Trabalho sobre jogos básicos usando liguagem C, solicitado pelo professor de Alfredo Boente durante a matéria Programação Estruturada da faculdade.
+
+---
+
+## Índice
+
+- [c-games](#c-games)
+  - [Índice](#índice)
+  - [`_S_N_A_K_E_`](#_s_n_a_k_e_)
+    - [Compilando o jogo via gcc](#compilando-o-jogo-via-gcc)
+  - [`JAN-KEN-PO`](#jan-ken-po)
+  - [`Jogo da Velha`](#jogo-da-velha)
+
+---
 
 ## `_S_N_A_K_E_`
 
@@ -16,8 +29,8 @@ gcc -o snake.exe .\app.c ..\tools\terminal_colors\terminal_colors.c
 
 ---
 
-## JAN-KEN-PO
+## `JAN-KEN-PO`
 
 ---
 
-## Jogo da Velha
+## `Jogo da Velha`
